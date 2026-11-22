@@ -1,0 +1,4 @@
+interface:
+  display_name: "Azhen-Story-Theater"
+  short_description: "把人物故事、文字稿或口播录音后台搓成 16:9/9:16 动画小剧场视频（可选主讲人出镜）"
+  default_prompt: "使用 $azhen-story-theater，根据我的故事主题或口播录音制作故事小剧场动画视频；新项目可选四种旁白与字幕组合，生词贴可独立开关；可直接选双语生词版（英文旁白、中英双语字幕、生词贴），再选语音来源，再给出分镜；默认欧洲清线漫画，逐镜保持人物与场景分层。"
