@@ -24,7 +24,7 @@ description: 故事小剧场视频工作室：用户给一个人物故事主题�
 | `references/production-notes.md` | 写 `story.js` 的引擎接口、安全区坐标（含主讲人槽位）、版式审查红线与清理指南。**写动画前读** |
 | `references/prompts.md` | 7 套人物故事画风模板、生图工具优先级与回退规则、出图提示词、内容过滤改法。**出图前读** |
 
-Python 脚本统一用 `PY=~/.venvs/vocab-story/bin/python` 运行。渲染器和音效库在 `code-to-video-studio`（优先 `~/.codex/skills/code-to-video-studio`，其次 `~/.claude/skills/code-to-video-studio`，下文写作 `$CTV`）。
+安装步骤与依赖见仓库根目录的 README.md。Python 脚本使用 `PY=~/.venvs/vocab-story/bin/python`。以下命令中的 `$CTV` 是渲染器目录，可运行 `zsh <本 skill>/scripts/renderer_path.sh` 查询。仓库自带渲染、抽帧、成片检查工具和音效下载清单。
 
 ---
 

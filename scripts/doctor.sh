@@ -11,9 +11,11 @@ else
 fi
 [[ -x $PY ]] && $PY -c "import faster_whisper" 2>/dev/null && ok "whisper（字幕分句 / 录音对轨）" || print "· 没有 faster-whisper：AI 配音可估算，但录音自动切句不可用"
 ls ~/.cache/huggingface/hub 2>/dev/null | grep -q faster-whisper-small && ok "whisper small 模型已缓存" || print "· whisper small 模型第一次运行时会自动下载（约 460 MB）"
-CTV=${CTV:-}
-[[ -n $CTV ]] || { [[ -f ~/.codex/skills/code-to-video-studio/scripts/render_page.mjs ]] && CTV=~/.codex/skills/code-to-video-studio || CTV=~/.claude/skills/code-to-video-studio; }
-[[ -f $CTV/scripts/render_page.mjs ]] && ok "code-to-video-studio 渲染器 ($CTV)" || bad "找不到 code-to-video-studio skill（渲染器 render_page.mjs 在里面）"
+if CTV=$(zsh "${0:A:h}/renderer_path.sh"); then
+  ok "渲染器 ($CTV)"
+else
+  bad "渲染器路径检查失败"
+fi
 LIB=${CTV_SOUND_LIB:-~/Documents/Codex/素材库/code-to-video-sounds}
 [[ -f $LIB/catalog.json ]] && ok "音效库" || bad "音效库不在 $LIB（python3 $CTV/scripts/sound_library.py fetch）"
 ls -d ~/Library/Caches/ms-playwright/chromium-*(N) >/dev/null 2>&1 && ok "playwright 浏览器 $(ls -d ~/Library/Caches/ms-playwright/chromium-*(N) | xargs -n1 basename | tr '\n' ' ')" || print "· 还没有 playwright 浏览器，new_project.sh 会自动下载"
